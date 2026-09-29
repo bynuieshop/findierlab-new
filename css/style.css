@@ -179,7 +179,7 @@ section.sect:first-of-type { border-top: none; }
 /* ==========================================================================
    AI x HUMAN
    ========================================================================== */
-#philosophy .phil-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: center; }
+#philosophy .phil-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
 .phil-headline { font-size: clamp(2.4rem,4.2vw,4rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.08; margin-bottom: 24px; }
 .phil-x { color: var(--purple); }
 .phil-quote { font-size: 1rem; color: var(--t-soft); line-height: 1.85; border-left: 2px solid var(--line); padding-left: 18px; max-width: 360px; }
