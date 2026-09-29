@@ -170,6 +170,7 @@ section.sect:first-of-type { border-top: none; }
 .for-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 .for-item { padding: 8px 40px 8px 0; }
 .for-item + .for-item { border-left: 1px solid var(--line); padding-left: 40px; }
+.for-icon { display: block; color: var(--black); margin-bottom: 20px; }
 .for-num { display: block; font-family: var(--font-en); font-size: .85rem; font-weight: 700; color: var(--purple); margin-bottom: 14px; }
 .for-title { font-family: var(--font-en); font-size: 1.05rem; font-weight: 800; letter-spacing: -.01em; margin-bottom: 10px; }
 .for-desc { font-size: .9rem; color: var(--t-soft); margin-bottom: 14px; word-break: keep-all; }
