@@ -156,9 +156,9 @@ section.sect:first-of-type { border-top: none; }
    ========================================================================== */
 #hero { padding: 168px 0 96px; }
 .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
-.hero-eyebrow { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .14em; color: var(--t-muted); text-transform: uppercase; margin-bottom: 22px; }
-.hero-headline { margin-bottom: 24px; }
-.hero-sub { max-width: 440px; margin-bottom: 34px; }
+.hero-eyebrow { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .14em; color: var(--t-muted); text-transform: uppercase; margin-bottom: clamp(16px, 2.2vw, 22px); }
+.hero-headline { margin-bottom: clamp(22px, 3vw, 32px); }
+.hero-sub { max-width: 440px; margin-bottom: clamp(26px, 3.6vw, 38px); }
 .hero-cta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 .hero-tags { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 .hero-tags span { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--t-muted); text-transform: uppercase; }
