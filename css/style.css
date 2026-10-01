@@ -208,7 +208,9 @@ section.sect:first-of-type { border-top: none; }
 .phil-headline { font-size: clamp(2.4rem,4.2vw,4rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.08; margin-bottom: 24px; }
 .phil-x { color: var(--purple); }
 .phil-quote { font-size: 1rem; color: var(--t-soft); line-height: 1.85; border-left: 2px solid var(--line); padding-left: 18px; max-width: 360px; }
-.phil-img { aspect-ratio: 5/4; border-radius: 4px; }
+.phil-img { aspect-ratio: 5/4; border-radius: 4px; overflow: hidden; }
+.phil-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.16,1,.3,1); }
+#philosophy:hover .phil-img img { transform: scale(1.06); }
 
 /* ==========================================================================
    OUR APPROACH
