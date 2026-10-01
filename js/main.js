@@ -31,4 +31,27 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  // Mega menu — one shared full-width panel opens on any of the three
+  // content-page nav triggers, showing all of them together (Toss-style)
+  var megaPanel = document.getElementById('megaPanel');
+  var megaTriggers = document.querySelectorAll('.nav-trigger');
+  if (megaPanel && megaTriggers.length) {
+    var hideTimer;
+    var openMega = function () {
+      clearTimeout(hideTimer);
+      megaPanel.classList.add('open');
+    };
+    var scheduleClose = function () {
+      hideTimer = setTimeout(function () { megaPanel.classList.remove('open'); }, 150);
+    };
+    megaTriggers.forEach(function (t) {
+      t.addEventListener('mouseenter', openMega);
+      t.addEventListener('mouseleave', scheduleClose);
+      t.addEventListener('focusin', openMega);
+      t.addEventListener('focusout', scheduleClose);
+    });
+    megaPanel.addEventListener('mouseenter', openMega);
+    megaPanel.addEventListener('mouseleave', scheduleClose);
+  }
 })();
