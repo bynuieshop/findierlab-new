@@ -340,17 +340,20 @@ section.sect:first-of-type { border-top: none; }
 
 /* Ecosystem flow (Creator page process, with hub step + outcomes) */
 .eco-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; align-items: stretch; }
-.eco-step { border: 1px solid var(--line); border-radius: 12px; padding: 26px 20px; display: flex; flex-direction: column; }
-.eco-step-icon { color: var(--black); margin-bottom: 18px; }
+.eco-step { border: 1px solid var(--line); border-radius: 12px; padding: 26px 20px; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.eco-step:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(17,17,17,.07); border-color: var(--purple); }
+.eco-step-icon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: rgba(123,97,255,.1); color: var(--purple); margin-bottom: 18px; }
 .eco-step-num { font-family: var(--font-en); font-size: .85rem; font-weight: 800; color: var(--purple); margin-bottom: 16px; display: block; }
 .eco-step-title { font-size: .96rem; font-weight: 800; margin-bottom: 14px; line-height: 1.35; word-break: keep-all; }
 .eco-step-list { font-size: .8rem; color: var(--t-soft); line-height: 1.9; word-break: keep-all; }
 .eco-step.hub { background: var(--black); border-color: var(--black); }
-.eco-step.hub .eco-step-icon { color: var(--lime); }
+.eco-step.hub:hover { border-color: var(--lime); }
+.eco-step.hub .eco-step-icon { background: rgba(211,244,90,.14); color: var(--lime); }
 .eco-step.hub .eco-step-num { color: var(--lime); }
 .eco-step.hub .eco-step-title { color: var(--white); }
 .eco-step.hub .eco-step-list { color: rgba(255,255,255,.6); }
 .eco-step.result { border-color: var(--lime); }
+.eco-step.result .eco-step-icon { background: rgba(211,244,90,.22); color: var(--black); }
 .eco-arrow { display: flex; align-items: center; justify-content: center; color: var(--t-muted); font-size: 18px; }
 .eco-outcomes-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
 .eco-outcomes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -509,5 +512,6 @@ section.sect:first-of-type { border-top: none; }
   }
   .fade-group > * { opacity: 1; transform: none; transition: none; }
   .btn-primary:hover, .btn-primary:active { transform: none; }
+  .eco-step:hover { transform: none; }
   .ph::before { transition: none; }
 }
