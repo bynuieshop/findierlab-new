@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="../css/style.css?v=20261001h">
+  <link rel="stylesheet" href="../css/style.css?v=20261001j">
 </head>
 <body>
 <header id="nav">
@@ -28,9 +28,32 @@
       </div>
     </a>
     <ul class="nav-menu">
-      <li class="nav-trigger"><a href="../for-business/">사업자</a></li>
-      <li class="nav-trigger"><a href="../creator/">크리에이터</a></li>
-      <li class="nav-trigger"><a href="../education/">교육·컨설팅</a></li>
+      <li class="nav-dropdown">
+        <a href="../for-business/">사업자</a>
+        <div class="nav-dropdown-panel">
+          <a href="../for-business/#problem">이런 고민 있으신가요?</a>
+          <a href="../for-business/#process">5단계 프로세스</a>
+          <a href="../for-business/#cover">다루는 영역</a>
+          <a href="../contact/">상담하기</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../creator/">크리에이터</a>
+        <div class="nav-dropdown-panel">
+          <a href="../creator/#why-now">왜 지금인가</a>
+          <a href="../creator/#how-it-works">참여 구조</a>
+          <a href="../creator/#faq">자주 묻는 질문</a>
+          <a href="../contact/">지원하기</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../education/">교육·컨설팅</a>
+        <div class="nav-dropdown-panel">
+          <a href="../education/#flagship">대표 강의</a>
+          <a href="../education/#topics">교육 주제</a>
+          <a href="../contact/">문의하기</a>
+        </div>
+      </li>
       <li><a href="../cases/">사례</a></li>
       <li><a href="../about/">회사소개</a></li>
     </ul>
@@ -40,31 +63,6 @@
     </div>
   </div>
 </header>
-
-<div class="mega-panel" id="megaPanel">
-  <div class="wrap mega-grid">
-    <div class="mega-col">
-      <p class="mega-col-title">사업자</p>
-      <a href="../for-business/#problem">이런 고민 있으신가요?</a>
-      <a href="../for-business/#process">5단계 프로세스</a>
-      <a href="../for-business/#cover">다루는 영역</a>
-      <a href="../contact/">상담하기</a>
-    </div>
-    <div class="mega-col">
-      <p class="mega-col-title">크리에이터</p>
-      <a href="../creator/#why-now">왜 지금인가</a>
-      <a href="../creator/#how-it-works">참여 구조</a>
-      <a href="../creator/#faq">자주 묻는 질문</a>
-      <a href="../contact/">지원하기</a>
-    </div>
-    <div class="mega-col">
-      <p class="mega-col-title">교육·컨설팅</p>
-      <a href="../education/#flagship">대표 강의</a>
-      <a href="../education/#topics">교육 주제</a>
-      <a href="../contact/">문의하기</a>
-    </div>
-  </div>
-</div>
 
 <div id="mobileMenu">
   <a href="../for-business/" class="mob-link">사업자</a>
@@ -264,10 +262,28 @@
 
   <!-- FINAL CTA -->
   <section id="final-cta" class="fade">
-    <div class="wrap">
-      <p class="eyebrow final-eyebrow">CONTACT</p>
-      <h2 class="final-headline">지금 방식이 맞는지부터,<br>먼저 봅니다.</h2>
-      <a href="../contact/" class="btn btn-primary">상담하기 →</a>
+    <div class="wrap final-cta-grid">
+      <div>
+        <p class="eyebrow final-eyebrow">CONTACT</p>
+        <h2 class="final-headline">지금 방식이 맞는지부터,<br>먼저 봅니다.</h2>
+        <a href="../contact/" class="btn btn-primary">상담하기 →</a>
+      </div>
+      <div class="footer-family">
+        <div class="footer-family-col">
+          <a href="https://findierlab.com" class="footer-family-title" target="_blank" rel="noopener">파인디어랩</a>
+          <a href="https://findierlab.com/vendierlab.html" target="_blank" rel="noopener">밴디어랩</a>
+          <a href="https://kidsfeedlab.com" target="_blank" rel="noopener">키즈피드랩</a>
+          <a href="https://findierlab.com/foodielab.html" target="_blank" rel="noopener">푸디랩</a>
+        </div>
+        <div class="footer-family-col">
+          <p class="footer-family-title">파인디어랩 스토리</p>
+          <a href="https://instagram.com/findier.lab" target="_blank" rel="noopener">인스타그램</a>
+        </div>
+        <div class="footer-family-col">
+          <p class="footer-family-title">파인디어랩 허브</p>
+          <a href="https://findierlab.com/portal/login.html" target="_blank" rel="noopener">운영허브</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -275,24 +291,6 @@
 
 <footer id="footer">
   <div class="wrap">
-    <div class="footer-family">
-      <div class="footer-family-col">
-        <a href="https://findierlab.com" class="footer-family-title" target="_blank" rel="noopener">파인디어랩</a>
-        <a href="https://instagram.com/findier.lab" target="_blank" rel="noopener">인스타그램</a>
-      </div>
-      <div class="footer-family-col">
-        <a href="https://findierlab.com/foodielab.html" class="footer-family-title" target="_blank" rel="noopener">Foodie Lab</a>
-      </div>
-      <div class="footer-family-col">
-        <a href="https://kidsfeedlab.com" class="footer-family-title" target="_blank" rel="noopener">KidsFeed Lab</a>
-      </div>
-      <div class="footer-family-col">
-        <a href="https://findierlab.com/vendierlab.html" class="footer-family-title" target="_blank" rel="noopener">VENDIER LAB</a>
-      </div>
-      <div class="footer-family-col">
-        <a href="https://findierlab-intranet.vercel.app" class="footer-family-title" target="_blank" rel="noopener">사장님 허브</a>
-      </div>
-    </div>
     <div class="footer-row">
       <span class="footer-word">FINDIER LAB</span>
       <div class="footer-links">
@@ -311,6 +309,6 @@
   </div>
 </footer>
 
-<script src="../js/main.js?v=20261001h"></script>
+<script src="../js/main.js?v=20261001j"></script>
 </body>
 </html>
