@@ -231,7 +231,8 @@ section.sect:first-of-type { border-top: none; }
 .teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .teaser.rev .teaser-grid { direction: rtl; }
 .teaser.rev .teaser-grid > * { direction: ltr; }
-.teaser-img { aspect-ratio: 4/3; border-radius: 4px; }
+.teaser-img { aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; }
+.teaser-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .teaser-eyebrow { font-family: var(--font-en); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; color: var(--t-muted); text-transform: uppercase; margin-bottom: 18px; }
 .teaser-headline { font-size: clamp(1.6rem,2.6vw,2.3rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.32; margin-bottom: 16px; word-break: keep-all; }
 .teaser-copy { font-size: .95rem; color: var(--t-soft); margin-bottom: 22px; word-break: keep-all; }
@@ -435,6 +436,8 @@ section.sect:first-of-type { border-top: none; }
 #hero .hero-img:hover::before,
 .teaser-grid:hover .teaser-img::before,
 #philosophy:hover .phil-img::before { transform: scale(1.06); }
+.teaser-img img { transition: transform .7s cubic-bezier(.16,1,.3,1); }
+.teaser-grid:hover .teaser-img img { transform: scale(1.06); }
 
 /* Hero / page-hero entrance choreography — plays once on load, not scroll-tied */
 .hero-eyebrow, .hero-headline, .hero-sub, .hero-cta-row, .hero-tags, #hero .hero-img,
