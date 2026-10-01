@@ -60,10 +60,14 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -.03em; line-height: 1.18; word-b
 .num { font-family: var(--font-en); font-weight: 700; color: var(--purple); }
 
 .mark {
-  background: var(--lime);
+  background-image: linear-gradient(var(--lime), var(--lime));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
   padding: 0 .12em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  filter: blur(6px);
+  opacity: 0;
 }
 
 /* Buttons */
@@ -401,7 +405,14 @@ section.sect:first-of-type { border-top: none; }
 /* Manifesto (About) */
 .manifesto-block { text-align: center; padding: 40px 0; }
 .manifesto-text { max-width: 780px; margin: 0 auto; font-size: clamp(1.4rem,2.6vw,2.1rem); font-weight: 800; line-height: 1.55; letter-spacing: -.02em; word-break: keep-all; }
-.manifesto-text .c-lime { background: var(--lime); padding: 0 .1em; }
+.manifesto-text .c-lime {
+  background-image: linear-gradient(var(--lime), var(--lime));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  padding: 0 .1em;
+  filter: blur(6px);
+  opacity: 0;
+}
 .manifesto-text .line, .question-line .line { display: block; }
 .question-block { max-width: 640px; margin: 0 auto; text-align: center; }
 .question-line { font-size: clamp(1.3rem,2.2vw,1.8rem); font-weight: 800; line-height: 1.5; word-break: keep-all; }
@@ -486,6 +497,23 @@ section.sect:first-of-type { border-top: none; }
   to { opacity: 1; transform: none; }
 }
 
+/* Blur-highlight — the lime-marked word blurs into focus while its
+   highlight sweeps in left-to-right, right as the headline above it
+   finishes settling */
+@keyframes markReveal {
+  0% { opacity: 0; filter: blur(6px); background-size: 0% 100%; }
+  45% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; filter: blur(0); background-size: 100% 100%; }
+}
+.hero-headline .mark, .page-hero h1 .mark {
+  animation: markReveal .85s cubic-bezier(.65,0,.35,1) forwards;
+  animation-delay: .62s;
+}
+.fade.in .c-lime, .fade-group.in .c-lime {
+  animation: markReveal .85s cubic-bezier(.65,0,.35,1) forwards;
+  animation-delay: .15s;
+}
+
 /* Staggered group reveal — same trigger as .fade (see main.js), but direct
    children step in one after another instead of arriving all at once */
 .fade-group > * {
@@ -514,4 +542,5 @@ section.sect:first-of-type { border-top: none; }
   .btn-primary:hover, .btn-primary:active { transform: none; }
   .eco-step:hover { transform: none; }
   .ph::before { transition: none; }
+  .mark, .c-lime { animation: none; opacity: 1; filter: none; background-size: 100% 100%; }
 }
