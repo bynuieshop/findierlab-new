@@ -285,7 +285,10 @@ section.sect:first-of-type { border-top: none; }
   section.sect { padding: 80px 0; }
   #hero { padding: 104px 0 64px; }
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-img { order: -1; aspect-ratio: 16/10; margin-bottom: 8px; }
+  .hero-img {
+    order: -1; aspect-ratio: 16/10; margin-bottom: 20px; border-radius: 0;
+    width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+  }
   .hero-tags { flex-direction: row; flex-wrap: wrap; gap: 14px; }
 
   .for-grid { grid-template-columns: 1fr; }
@@ -435,7 +438,10 @@ section.sect:first-of-type { border-top: none; }
 @media (max-width: 860px) {
   .page-hero { padding: 100px 0 56px; }
   .page-hero-grid { grid-template-columns: 1fr; gap: 32px; }
-  .page-hero-img { order: -1; aspect-ratio: 16/10; margin-bottom: 8px; }
+  .page-hero-img {
+    order: -1; aspect-ratio: 16/10; margin-bottom: 20px; border-radius: 0;
+    width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+  }
   .check-grid, .topic-grid, .form-grid { grid-template-columns: 1fr; }
   .process-flow { grid-auto-flow: row; }
   .eco-flow { grid-template-columns: 1fr; }
