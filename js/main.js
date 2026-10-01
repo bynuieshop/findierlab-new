@@ -10,7 +10,7 @@
   }
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fadeEls = document.querySelectorAll('.fade');
+  var fadeEls = document.querySelectorAll('.fade, .fade-group');
   if (reduceMotion) {
     fadeEls.forEach(function (el) { el.classList.add('in'); });
   } else {
@@ -20,5 +20,15 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
     fadeEls.forEach(function (el) { fader.observe(el); });
+  }
+
+  // Nav gains a subtle elevation once the page scrolls — a quiet, Toss-style polish cue
+  var nav = document.getElementById('nav');
+  if (nav) {
+    var onScroll = function () {
+      nav.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 })();

@@ -384,3 +384,73 @@ section.sect:first-of-type { border-top: none; }
   .case-col:nth-child(3) { border-left: none; border-top: 1px solid var(--line); }
   .case-col:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
+
+/* ==========================================================================
+   MOTION — restrained, Toss-style polish: staggered reveals, tactile
+   press/hover feedback, subtle zoom. No animation libraries, CSS only.
+   ========================================================================== */
+
+/* Nav gains a quiet elevation once the page scrolls (toggled via main.js) */
+#nav { transition: box-shadow .3s ease, background .3s ease; }
+#nav.scrolled { box-shadow: 0 1px 0 rgba(17,17,17,.07); }
+
+/* Button / link micro-interactions */
+.btn-primary { transition: opacity .2s ease, transform .18s cubic-bezier(.34,1.56,.64,1); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-primary:active { transform: translateY(0) scale(.96); transition-duration: .08s; }
+.btn-text { transition: opacity .2s ease, gap .2s ease; }
+.btn-text:hover { opacity: .6; }
+.for-item a.arrow { display: inline-block; transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .2s ease; }
+.for-item a.arrow:hover { transform: translateX(4px); }
+.teaser-cta .dot { transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+
+/* Placeholder panels get a slow, subtle zoom on section hover — gives even
+   tone blocks a sense of depth without touching layout */
+.ph { overflow: hidden; }
+.ph::before { transition: transform .7s cubic-bezier(.16,1,.3,1); }
+#hero .hero-img:hover::before,
+.teaser-grid:hover .teaser-img::before,
+#philosophy:hover .phil-img::before { transform: scale(1.06); }
+
+/* Hero / page-hero entrance choreography — plays once on load, not scroll-tied */
+.hero-eyebrow, .hero-headline, .hero-sub, .hero-cta-row, .hero-tags, #hero .hero-img,
+.page-hero .eyebrow, .page-hero h1, .page-hero .body-lg, .page-hero-cta {
+  opacity: 0;
+  animation: revealUp .7s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-eyebrow, .page-hero .eyebrow { animation-delay: .05s; }
+.hero-headline, .page-hero h1 { animation-delay: .12s; }
+.hero-tags { animation-delay: .18s; }
+.hero-sub, .page-hero .body-lg { animation-delay: .24s; }
+#hero .hero-img { animation-delay: .3s; }
+.hero-cta-row, .page-hero-cta { animation-delay: .34s; }
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Staggered group reveal — same trigger as .fade (see main.js), but direct
+   children step in one after another instead of arriving all at once */
+.fade-group > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+}
+.fade-group.in > * { opacity: 1; transform: none; }
+.fade-group > *:nth-child(1) { transition-delay: 0s; }
+.fade-group > *:nth-child(2) { transition-delay: .07s; }
+.fade-group > *:nth-child(3) { transition-delay: .14s; }
+.fade-group > *:nth-child(4) { transition-delay: .21s; }
+.fade-group > *:nth-child(5) { transition-delay: .28s; }
+.fade-group > *:nth-child(6) { transition-delay: .35s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow, .hero-headline, .hero-sub, .hero-cta-row, .hero-tags, #hero .hero-img,
+  .page-hero .eyebrow, .page-hero h1, .page-hero .body-lg, .page-hero-cta {
+    animation: none; opacity: 1;
+  }
+  .fade-group > * { opacity: 1; transform: none; transition: none; }
+  .btn-primary:hover, .btn-primary:active { transform: none; }
+  .ph::before { transition: none; }
+}
