@@ -310,6 +310,9 @@ section.sect:first-of-type { border-top: none; }
 
 /* Page hero (smaller than homepage hero) */
 .page-hero { padding: 168px 0 88px; background: var(--offwhite); }
+/* Hero image illustrations have their own white card background — keep
+   the hero section white too so there's no visible seam around the image */
+.page-hero:has(.page-hero-img) { background: var(--white); }
 .page-hero .eyebrow { margin-bottom: 20px; }
 .page-hero h1 { max-width: 760px; margin-bottom: 20px; }
 .page-hero .body-lg { max-width: 560px; }
