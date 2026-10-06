@@ -60,4 +60,32 @@
       updateParallax();
     }
   }
+
+  // Process/ecosystem step numbers count up from 0 the first time they
+  // scroll into view — a small tell that the steps are a real sequence
+  if (!reduceMotion) {
+    var countEls = document.querySelectorAll('.process-step-num, .eco-step-num');
+    if (countEls.length) {
+      var counter = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          obs.unobserve(el);
+          var target = parseInt(el.textContent, 10);
+          if (isNaN(target)) return;
+          var duration = 550;
+          var start = null;
+          var step = function (ts) {
+            if (start === null) start = ts;
+            var progress = Math.min(1, (ts - start) / duration);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = String(Math.round(eased * target)).padStart(2, '0');
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.4 });
+      countEls.forEach(function (el) { counter.observe(el); });
+    }
+  }
 })();
