@@ -13,7 +13,6 @@ function renderBlogCards(containerSelector, prefix, limit) {
           '<p class="blog-cat">' + post.category + '</p>' +
           '<h3 class="blog-title">' + post.title + '</h3>' +
           '<p class="blog-excerpt">' + post.excerpt + '</p>' +
-          '<p class="blog-date">' + post.date + '</p>' +
         '</div>' +
       '</a>'
     );
