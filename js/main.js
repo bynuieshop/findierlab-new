@@ -88,4 +88,32 @@
       countEls.forEach(function (el) { counter.observe(el); });
     }
   }
+
+  // Curriculum filter — tag buttons toggle which .curr-card entries show
+  var currFilter = document.querySelector('.curr-filter');
+  if (currFilter) {
+    var currCards = document.querySelectorAll('.curr-card');
+    currFilter.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      currFilter.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.dataset.filter;
+      currCards.forEach(function (card) {
+        var show = cat === '전체' || card.dataset.cat === cat;
+        card.classList.toggle('is-hidden', !show);
+      });
+    });
+  }
+
+  // Reviews filter — no data yet, just gives the tag row working press-state
+  var reviewsFilter = document.querySelector('.reviews-filter');
+  if (reviewsFilter) {
+    reviewsFilter.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      reviewsFilter.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  }
 })();

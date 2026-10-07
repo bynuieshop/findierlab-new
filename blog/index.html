@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>사례 — FINDIER LAB</title>
-  <meta name="description" content="Findier Local의 첫 파일럿이 진행 중입니다. 실제 사례는 문제·확인·실행·결과 구조로, 결과가 확인되는 대로 공개합니다.">
+  <title>블로그 — FINDIER LAB</title>
+  <meta name="description" content="파인디어랩이 소상공인 마케팅, 지역 크리에이터, AI 마케팅 현장에서 쌓은 생각을 기록합니다.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="사례 — FINDIER LAB">
-  <meta property="og:description" content="Findier Local의 첫 파일럿이 진행 중입니다. 실제 사례는 문제·확인·실행·결과 구조로, 결과가 확인되는 대로 공개합니다.">
+  <meta property="og:title" content="블로그 — FINDIER LAB">
+  <meta property="og:description" content="파인디어랩이 소상공인 마케팅, 지역 크리에이터, AI 마케팅 현장에서 쌓은 생각을 기록합니다.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
@@ -78,52 +78,16 @@
   <!-- HERO -->
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow">CASES</p>
-      <h1 class="h1">사례는 지금<br><span class="mark">만들어지고</span> 있습니다.</h1>
-      <p class="body-lg">Findier Local은 이제 막 첫 파일럿을 시작합니다.<br>실제 사업자와 함께 진행한 사례는, 결과가 확인되는 대로 공개합니다.<br>근거 없는 숫자는 넣지 않습니다.</p>
+      <p class="eyebrow">BLOG / INSIGHT</p>
+      <h1 class="h1">파인디어랩이 쌓는 정보</h1>
+      <p class="body-lg">소상공인 마케팅, 지역 크리에이터, AI 마케팅 현장에서 쌓은 생각을 기록합니다.</p>
     </div>
   </section>
 
-  <!-- FORMAT PREVIEW -->
+  <!-- POSTS -->
   <section class="sect fade">
     <div class="wrap">
-      <div class="sect-head">
-        <p class="eyebrow">FORMAT</p>
-        <h2 class="h2">사례는 이런 구조로 공개될 예정입니다.</h2>
-      </div>
-      <div class="case-card">
-        <div class="case-top">
-          <p class="case-tag">SAMPLE — 실제 사례 아님</p>
-          <p class="case-title">지역 매장명 (파일럿 진행 중)</p>
-        </div>
-        <div class="case-grid fade-group">
-          <div class="case-col">
-            <p class="case-col-label">문제</p>
-            <p class="case-col-body">무슨 문제가 있었는가</p>
-          </div>
-          <div class="case-col">
-            <p class="case-col-label">확인</p>
-            <p class="case-col-body">무엇을 살펴봤는가</p>
-          </div>
-          <div class="case-col">
-            <p class="case-col-label">실행</p>
-            <p class="case-col-body">무엇을 바꿨는가</p>
-          </div>
-          <div class="case-col">
-            <p class="case-col-label">결과</p>
-            <p class="case-col-body">무엇이 달라졌는가</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section id="final-cta" class="fade">
-    <div class="wrap">
-      <p class="eyebrow final-eyebrow">PILOT</p>
-      <h2 class="final-headline">첫 사례의 주인공이<br>되어보시겠어요?</h2>
-      <a href="../for-business/" class="btn btn-primary">파일럿 파트너 알아보기 →</a>
+      <div class="blog-grid fade-group" id="allBlogGrid"></div>
     </div>
   </section>
 
@@ -164,6 +128,9 @@
   </div>
 </footer>
 
+<script src="../js/blog-data.js?v=20261001y"></script>
+<script src="../js/blog-render.js?v=20261001y"></script>
+<script>renderBlogCards('#allBlogGrid', '../');</script>
 <script src="../js/main.js?v=20261001y"></script>
 </body>
 </html>
