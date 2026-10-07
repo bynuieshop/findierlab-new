@@ -354,7 +354,7 @@ section.sect:first-of-type { border-top: none; }
 /* ==========================================================================
    FOOTER — simplified
    ========================================================================== */
-.footer-simple { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 28px; padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
+.footer-simple { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; gap: 28px; padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
 .footer-simple-title { display: block; font-size: .92rem; font-weight: 800; margin-bottom: 14px; }
 .footer-simple-col a { display: block; font-size: .82rem; color: var(--t-muted); padding: 5px 0; transition: color .15s; }
 .footer-simple-col a:hover { color: var(--t-soft); }
