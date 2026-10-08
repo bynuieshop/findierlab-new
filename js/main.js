@@ -92,7 +92,7 @@
   // Curriculum filter — tag buttons toggle which .curr-card entries show
   var currFilter = document.querySelector('.curr-filter');
   if (currFilter) {
-    var currCards = document.querySelectorAll('.curr-card');
+    var currCards = document.querySelectorAll('.curr-card:not(.featured)');
     currFilter.addEventListener('click', function (e) {
       var btn = e.target.closest('button');
       if (!btn) return;
