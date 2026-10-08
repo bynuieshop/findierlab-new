@@ -424,7 +424,7 @@ section.sect:first-of-type { border-top: none; }
   #final-cta { padding: 96px 0; }
 
   .for-grid:not(.cols-4):not(.cols-5) { grid-template-columns: 1fr; }
-  .for-grid:not(.cols-4):not(.cols-5) .for-item + .for-item { border-top: 1px solid var(--line); padding-top: 28px; margin-top: 28px; }
+  .for-grid:not(.cols-4):not(.cols-5) .for-item + .for-item { border-top: 1px solid var(--line); padding-top: 28px; margin-top: 28px; border-left: none; padding-left: 0; }
   .for-grid.cols-4, .for-grid.cols-5 { grid-template-columns: 1fr 1fr; }
   .for-grid.cols-4 .for-item:nth-child(2n), .for-grid.cols-5 .for-item:nth-child(2n) { border-left: 1px solid var(--line); padding-left: 28px; }
   .for-grid.cols-4 .for-item:nth-child(odd), .for-grid.cols-5 .for-item:nth-child(odd) { padding-left: 0; border-left: none; }
