@@ -276,7 +276,7 @@ section.sect:first-of-type { border-top: none; }
 .founder-bullets li::before { content: ''; position: absolute; left: 0; top: 14px; width: 5px; height: 5px; border-radius: 50%; background: var(--purple); }
 .founder-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .founder-tags span { font-family: var(--font-en); font-size: .76rem; font-weight: 700; color: var(--purple); background: rgba(123,97,255,.08); padding: 7px 13px; border-radius: 100px; }
-.founder-photo { aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.founder-photo { aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .founder-photo-note { position: relative; z-index: 1; font-family: var(--font-en); font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--t-muted); text-transform: uppercase; }
 
 /* ==========================================================================
