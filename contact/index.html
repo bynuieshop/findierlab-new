@@ -44,7 +44,7 @@
           <a href="../creator/#why-now">왜 지금인가</a>
           <a href="../creator/#how-it-works">참여 구조</a>
           <a href="../creator/#faq">자주 묻는 질문</a>
-          <a href="../contact/">지원하기</a>
+          <a href="../contact/?type=creator">지원하기</a>
         </div>
       </li>
       <li class="nav-dropdown">
@@ -277,6 +277,28 @@
             <button type="submit" class="submit-btn">문의 보내기</button>
           </form>
 
+          <!-- CREATOR -->
+          <form id="form-creator" class="contact-variant-form" style="display:none;" novalidate>
+            <input type="hidden" name="_subject" value="FINDIER LAB 지역 크리에이터 지원">
+            <div class="field"><label>성함</label><input type="text" name="name" placeholder="성함" required></div>
+            <div class="field"><label>연락처</label><input type="text" name="contact" placeholder="010-0000-0000" required></div>
+            <div class="field"><label>이메일 <span class="opt">(선택)</span></label><input type="text" name="email" placeholder="이메일"></div>
+            <div class="field">
+              <label>활동 희망 지역</label>
+              <select name="활동 희망 지역" required>
+                <option value="">선택해주세요</option>
+                <option>양산</option><option>부산</option><option>김해</option><option>창원</option><option>기타</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>블로그·SNS 운영 경험 <span class="opt">(선택)</span></label>
+              <select name="운영 경험"><option value="">선택해주세요</option><option>처음 시작</option><option>가끔 운영</option><option>꾸준히 운영</option></select>
+            </div>
+            <div class="field"><label>블로그·SNS 링크 <span class="opt">(선택)</span></label><input type="text" name="블로그·SNS 링크" placeholder="운영 중인 채널이 있으면 남겨주세요"></div>
+            <div class="field"><label>지원 동기</label><textarea name="message" placeholder="크리에이터로 활동하고 싶은 이유를 편하게 적어주세요." required></textarea></div>
+            <button type="submit" class="submit-btn">크리에이터 지원하기</button>
+          </form>
+
           <div id="form-success" class="form-success">
             <p class="success-title">문의가 접수되었습니다.</p>
             <p class="success-sub">내용을 확인한 뒤 연락드리겠습니다.</p>
@@ -363,6 +385,11 @@ var CONTACT_TYPES = {
     heroTitle: '디자인·제작 문의',
     heroSub: '필요한 결과물과 목적을 알려주세요.',
     guide: '필요한 결과물과 목적을 알려주세요.'
+  },
+  creator: {
+    heroTitle: '지역 크리에이터 지원',
+    heroSub: '활동 희망 지역과 평소 기록하는 방식을 알려주시면<br>확인 후 순차적으로 연락드립니다.',
+    guide: '남겨주시면, 순서대로 빠르게 확인합니다.'
   }
 };
 
