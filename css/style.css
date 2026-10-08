@@ -345,6 +345,22 @@ section.sect:first-of-type { border-top: none; }
 .article-back:hover { opacity: .6; }
 
 /* ==========================================================================
+   SITUATION TABLE — "이럴 때" (replaces a flat service list with a
+   situation-first picker; same copy reused on Home / For Business)
+   ========================================================================== */
+.situation-table { background: var(--black); border-radius: 20px; padding: 12px 40px; }
+.situation-row { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.situation-row:last-of-type { border-bottom: none; }
+.situation-row.head { padding: 24px 0 16px; }
+.situation-row.head span { font-family: var(--font-en); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+.situation-when { color: rgba(255,255,255,.75); font-size: .95rem; font-weight: 600; word-break: keep-all; }
+.situation-what { color: var(--white); font-size: 1rem; word-break: keep-all; }
+.situation-what b { font-weight: 800; }
+.situation-link { color: var(--lime); font-weight: 700; font-size: .9rem; white-space: nowrap; }
+.situation-link:hover { opacity: .75; }
+.situation-note { color: rgba(255,255,255,.4); font-size: .82rem; padding: 20px 0 24px; word-break: keep-all; }
+
+/* ==========================================================================
    CONTACT — Kakao CTA
    ========================================================================== */
 .contact-kakao { background: var(--black); border-radius: 20px; padding: 72px 40px; text-align: center; }
@@ -429,6 +445,10 @@ section.sect:first-of-type { border-top: none; }
   .blog-grid { grid-template-columns: 1fr; }
 
   .contact-kakao { padding: 52px 24px; border-radius: 14px; }
+  .situation-table { padding: 8px 22px; border-radius: 14px; }
+  .situation-row.head { display: none; }
+  .situation-row { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+  .situation-link { justify-self: start; }
   .footer-simple { grid-template-columns: 1fr; gap: 24px; }
 }
 
