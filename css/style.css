@@ -279,6 +279,11 @@ section.sect:first-of-type { border-top: none; }
 .founder-photo { aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .founder-photo-note { position: relative; z-index: 1; font-family: var(--font-en); font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--t-muted); text-transform: uppercase; }
 
+/* About "what we do" icon row */
+.about-what-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 760px; margin-top: 36px; }
+.about-what-item { display: flex; flex-direction: column; }
+.about-what-text { font-size: .92rem; font-weight: 700; line-height: 1.5; word-break: keep-all; margin-top: 4px; }
+
 /* ==========================================================================
    LOCAL CREATOR — mini flow strip
    ========================================================================== */
@@ -417,6 +422,7 @@ section.sect:first-of-type { border-top: none; }
   .for-grid.cols-4 .for-item:nth-child(n+3), .for-grid.cols-5 .for-item:nth-child(n+3) { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 28px; }
 
   .founder-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-what-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
   .founder-photo { order: -1; aspect-ratio: 16/10; }
   .founder-bullets { grid-template-columns: 1fr; }
 
