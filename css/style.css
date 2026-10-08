@@ -115,10 +115,10 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -.03em; line-height: 1.18; word-b
   border-bottom: 1px solid var(--line);
   display: flex; align-items: center; justify-content: space-between;
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; }
 .nav-logo-block { display: flex; flex-direction: column; gap: 4px; }
-.nav-word { display: block; font-family: var(--font-en); font-size: 15px; font-weight: 800; letter-spacing: .03em; line-height: 1; }
-.nav-tagline { display: block; font-family: var(--font-en); font-size: 8px; font-weight: 600; letter-spacing: .08em; color: var(--t-muted); line-height: 1.3; }
+.nav-word { display: block; font-family: var(--font-en); font-size: 18px; font-weight: 800; letter-spacing: .03em; line-height: 1; }
+.nav-tagline { display: block; font-family: var(--font-en); font-size: 9px; font-weight: 600; letter-spacing: .08em; color: var(--t-muted); line-height: 1.3; }
 .nav-menu { display: flex; align-items: center; gap: 34px; }
 .nav-menu > li { position: relative; }
 .nav-menu a { font-family: var(--font-en); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--t-soft); transition: color .2s; }
