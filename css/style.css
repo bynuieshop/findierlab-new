@@ -549,6 +549,7 @@ section.sect:first-of-type { border-top: none; }
 
 /* Subscription tier cards (For Business — 가게 블로그 운영 단계) */
 .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+.tier-grid.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 860px; }
 .tier-card { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 32px 28px; display: flex; flex-direction: column; }
 .tier-card.featured { border-color: var(--purple); border-width: 1.5px; }
 .tier-card.dark { background: var(--black); border-color: var(--black); }
@@ -584,7 +585,7 @@ section.sect:first-of-type { border-top: none; }
 .tier-note { font-size: .78rem; color: var(--t-muted); }
 
 @media (max-width: 860px) {
-  .tier-grid { grid-template-columns: 1fr; }
+  .tier-grid, .tier-grid.cols-2 { grid-template-columns: 1fr; }
 }
 
 /* Manifesto (About) */
