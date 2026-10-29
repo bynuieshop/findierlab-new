@@ -17,6 +17,7 @@
   --lime:     #D3F45A;
   --purple:   #7B61FF;
   --cyan:     #4DE7FF;
+  --tomato:   #E34234;
 
   --font-kr: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -68,6 +69,40 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -.03em; line-height: 1.18; word-b
   -webkit-box-decoration-break: clone;
   filter: blur(6px);
   opacity: 0;
+}
+
+/* Color-system preview (2026) — homepage hero only: tomato-red accent word
+   instead of the lime highlight bar. Scoped to .hero-headline so every
+   other .mark on the site keeps the original lime treatment. */
+.hero-headline .mark {
+  background-image: none;
+  color: var(--tomato);
+  padding: 0;
+}
+
+/* Hero orbs — purple/lime/tomato shown together, color-board style */
+.hero-visual { position: relative; }
+.hero-orb { position: absolute; border-radius: 50%; z-index: 0; filter: blur(1px); pointer-events: none; }
+.hero-orb-purple {
+  width: 190px; height: 190px; top: -56px; left: -56px;
+  background: radial-gradient(circle at 30% 25%, #b9a6ff, var(--purple) 62%, #5a3fd1);
+  opacity: .92;
+}
+.hero-orb-lime {
+  width: 96px; height: 96px; top: 56%; left: -40px;
+  background: radial-gradient(circle at 30% 25%, #f1ffc4, var(--lime) 58%, #a7c238);
+  opacity: .95;
+}
+.hero-orb-tomato {
+  width: 150px; height: 150px; bottom: -44px; right: -44px;
+  background: radial-gradient(circle at 30% 25%, #ff9d87, var(--tomato) 58%, #a82a1f);
+  opacity: .92;
+}
+.hero-img { position: relative; z-index: 1; }
+@media (max-width: 900px) {
+  .hero-orb-purple { width: 120px; height: 120px; top: -30px; left: -24px; }
+  .hero-orb-lime { width: 64px; height: 64px; top: 50%; left: -18px; }
+  .hero-orb-tomato { width: 96px; height: 96px; bottom: -22px; right: -18px; }
 }
 
 /* Buttons */
