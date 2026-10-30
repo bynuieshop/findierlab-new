@@ -45,6 +45,7 @@
         <a href="../for-business/">사업자</a>
         <div class="nav-dropdown-panel">
           <a href="../for-business/#blog">가게 블로그 운영</a>
+          <a href="../ai-package/">AI 검색 풀패키지</a>
           <a href="../for-business/#creator-program">지역 크리에이터</a>
           <a href="../for-business/#problem">사업장 진단</a>
           <a href="../contact/">상담하기</a>
@@ -129,6 +130,10 @@
         <button type="button" class="type-choice" data-type="creator">
           <span class="type-choice-title">크리에이터 지원하기</span>
           <span class="type-choice-desc">지역 크리에이터로 활동하고 싶다면</span>
+        </button>
+        <button type="button" class="type-choice" data-type="package">
+          <span class="type-choice-title">AI 검색 풀패키지 상담하기</span>
+          <span class="type-choice-desc">홈페이지부터 AI 검색 대응까지 한 번에 구축하고 싶다면</span>
         </button>
       </div>
 
@@ -332,6 +337,29 @@
             <button type="submit" class="submit-btn">크리에이터 지원하기</button>
           </form>
 
+          <!-- AI SEARCH PACKAGE -->
+          <form id="form-package" class="contact-variant-form" style="display:none;" novalidate>
+            <input type="hidden" name="_subject" value="FINDIER LAB AI 검색 풀패키지 상담 신청">
+            <div class="field"><label>담당자 성함</label><input type="text" name="name" placeholder="성함" required></div>
+            <div class="field"><label>연락처</label><input type="text" name="contact" placeholder="010-0000-0000" required></div>
+            <div class="field"><label>이메일 <span class="opt">(선택)</span></label><input type="text" name="email" placeholder="이메일"></div>
+            <div class="field">
+              <label>업종 <span class="opt">(선택)</span></label>
+              <select name="업종"><option value="">선택해주세요</option><option>가게·카페·음식점</option><option>학원·교습소</option><option>유치원·어린이집</option><option>공방·클래스·스튜디오</option><option>기타</option></select>
+            </div>
+            <div class="field">
+              <label>지역 <span class="opt">(선택)</span></label>
+              <select name="지역"><option value="">선택해주세요</option><option>양산</option><option>부산</option><option>김해</option><option>창원</option><option>기타</option></select>
+            </div>
+            <div class="field">
+              <label>현재 운영 중인 채널 <span class="opt">(선택)</span></label>
+              <select name="운영 중인 채널"><option value="">선택해주세요</option><option>있음</option><option>없음</option></select>
+            </div>
+            <div class="field"><label>채널 URL <span class="opt">(선택)</span></label><input type="text" name="채널 URL" placeholder="홈페이지·플레이스 등 있으시면 남겨주세요"></div>
+            <div class="field"><label>문의 내용</label><textarea name="message" placeholder="지금 상황과 궁금한 점을 편하게 적어주세요." required></textarea></div>
+            <button type="submit" class="submit-btn">상담 신청하기</button>
+          </form>
+
           <div id="form-success" class="form-success">
             <p class="success-title">문의가 접수되었습니다.</p>
             <p class="success-sub">내용을 확인한 뒤 연락드리겠습니다.</p>
@@ -423,6 +451,11 @@ var CONTACT_TYPES = {
     heroTitle: '지역 크리에이터 지원',
     heroSub: '활동 희망 지역과 평소 기록하는 방식을 알려주시면<br>확인 후 순차적으로 연락드립니다.',
     guide: '남겨주시면, 순서대로 빠르게 확인합니다.'
+  },
+  package: {
+    heroTitle: 'AI 검색 풀패키지 상담',
+    heroSub: '업종과 지금 운영 중인 채널을 알려주시면<br>현황부터 확인하고 안내드립니다.',
+    guide: '업종과 지금 상태부터 확인하겠습니다.'
   }
 };
 
