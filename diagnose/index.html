@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-site-verification" content="1bU7yXqmsnwM57BhSG9vTkV5gLtmIs-WQqaBRsu8-Dc" />
+  <meta name="naver-site-verification" content="1a16d04d5a9178d135cf3c80ac081a5ecd81d11d" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VTZY9P51Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5VTZY9P51Z');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>브랜드 자가진단 — FINDIER LAB</title>
+  <meta name="description" content="6가지 질문으로 지금 내 브랜드 상태를 진단해보세요. 3분이면 충분합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="브랜드 자가진단 — FINDIER LAB">
+  <meta property="og:description" content="지금 내 브랜드, 어디에 있나요? 6문항으로 무료 진단하세요.">
+  <meta property="og:url" content="https://findierlab.com/diagnose/">
+  <link rel="canonical" href="https://findierlab.com/diagnose/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --lime: #D3F45A; --purple: #7B61FF; --cyan: #4DE7FF;
+      --black: #111111; --white: #FFFFFF; --offwhite: #F7F7F5;
+      --gray1: #F2F0ED; --gray2: #E2E0DC;
+    }
+    html, body { height: 100%; overflow: hidden; }
+    body { font-family: 'Pretendard','Inter',-apple-system,sans-serif; color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 999;
+      background: #fff; border-bottom: 1px solid #E8E8E8;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo-text { font-family: 'Inter',sans-serif; font-size: 15px; font-weight: 800; letter-spacing: .05em; color: #111; }
+    .nav-back { font-family: 'Inter',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .1em; color: #aaa; text-transform: uppercase; display: flex; align-items: center; gap: 6px; transition: color .2s; }
+    .nav-back:hover { color: #111; }
+
+    /* PROGRESS BAR */
+    .prog-bar { position: fixed; top: 60px; left: 0; right: 0; height: 3px; background: #F0F0EE; z-index: 998; }
+    .prog-fill { height: 100%; background: var(--lime); width: 0%; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+
+    /* QUIZ STAGE */
+    #quiz { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; }
+
+    /* SCREEN */
+    .screen {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 48px 24px;
+      transform: translateX(100%); opacity: 0;
+      transition: transform 0.42s cubic-bezier(.4,0,.2,1), opacity 0.42s;
+      pointer-events: none;
+    }
+    .screen.active { transform: translateX(0); opacity: 1; pointer-events: all; }
+    .screen.exit { transform: translateX(-100%); opacity: 0; pointer-events: none; }
+
+    /* ── INTRO ── */
+    .intro-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(123,97,255,.08); border: 1px solid rgba(123,97,255,.2);
+      color: var(--purple); font-family: 'Inter',sans-serif; font-size: 9px; font-weight: 800;
+      letter-spacing: .2em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .intro-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); }
+    .intro-title {
+      font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 900; line-height: 1.1;
+      letter-spacing: -.04em; text-align: center; margin-bottom: 20px;
+    }
+    .intro-sub { font-size: .95rem; color: #777; text-align: center; line-height: 1.75; margin-bottom: 48px; max-width: 440px; }
+    .start-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--black); color: var(--white);
+      font-family: 'Pretendard',sans-serif; font-size: 15px; font-weight: 700;
+      padding: 18px 36px; border-radius: 100px; cursor: pointer; border: none;
+      transition: opacity .2s;
+    }
+    .start-btn:hover { opacity: .8; }
+    .intro-note { font-size: .75rem; color: #ccc; margin-top: 14px; text-align: center; letter-spacing: .01em; }
+
+    /* ── QUESTION ── */
+    .q-wrap { width: 100%; max-width: 560px; }
+    .q-num { font-family: 'Inter',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .16em; color: #bbb; margin-bottom: 16px; }
+    .q-text { font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 900; line-height: 1.4; letter-spacing: -.03em; margin-bottom: 44px; }
+    .answers { display: flex; flex-direction: column; gap: 12px; }
+    .ans-btn {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 24px; border-radius: 14px;
+      border: 1.5px solid var(--gray2); background: var(--white);
+      cursor: pointer; font-family: 'Pretendard','Inter',sans-serif;
+      font-size: .95rem; font-weight: 600; text-align: left;
+      transition: all .18s; width: 100%;
+    }
+    .ans-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+    .ans-btn:active { transform: scale(.98); }
+    .ans-btn.ans-yes { background: var(--lime); border-color: var(--lime); color: #111; }
+    .ans-btn.ans-no { background: var(--black); border-color: var(--black); color: var(--white); }
+    .ans-btn:disabled { opacity: .5; pointer-events: none; }
+    .ans-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 800; flex-shrink: 0; }
+    .ans-yes .ans-icon { background: rgba(0,0,0,.12); }
+    .ans-no .ans-icon { background: rgba(255,255,255,.12); }
+
+    /* ── RESULT ── */
+    #s-result {
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      align-items: flex-start; padding: 48px 24px 80px;
+      justify-content: flex-start;
+    }
+    .result-wrap { width: 100%; max-width: 560px; margin: 0 auto; }
+    .result-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(211,244,90,.15); border: 1px solid rgba(211,244,90,.4);
+      color: #5a7800; font-family: 'Inter',sans-serif; font-size: 9px; font-weight: 800;
+      letter-spacing: .2em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .result-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+    .result-score {
+      font-family: 'Inter',sans-serif; font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 900; letter-spacing: -.05em; line-height: 1; margin-bottom: 4px;
+    }
+    .result-score .of { font-size: .35em; color: #ccc; font-weight: 700; }
+    .result-stage {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--offwhite); padding: 8px 16px; border-radius: 100px;
+      font-family: 'Inter',sans-serif; font-size: 10px; font-weight: 800;
+      letter-spacing: .1em; color: #555; margin-bottom: 28px;
+    }
+    .result-stage-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .result-diag {
+      font-size: 1.05rem; font-weight: 700; color: #111; line-height: 1.65;
+      margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--gray2);
+    }
+    .insights-label { font-family: 'Inter',sans-serif; font-size: 9px; font-weight: 800; letter-spacing: .18em; color: #bbb; text-transform: uppercase; margin-bottom: 14px; }
+    .result-insights { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .insight-item { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: #555; line-height: 1.65; }
+    .insight-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 7px; }
+    .result-plan {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--offwhite); border: 1px solid var(--gray2);
+      border-radius: 12px; padding: 14px 20px;
+      font-size: .88rem; font-weight: 700; color: #444; margin-bottom: 28px;
+      transition: border-color .18s, background .18s;
+    }
+    .result-plan:hover { border-color: var(--purple); background: #fff; }
+    .plan-icon { font-size: 1rem; }
+    .result-cta {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--black); color: var(--white);
+      font-family: 'Pretendard',sans-serif; font-size: 15px; font-weight: 700;
+      padding: 18px 32px; border-radius: 100px;
+      transition: opacity .2s; width: 100%; margin-bottom: 14px;
+    }
+    .result-cta:hover { opacity: .8; }
+    .result-cta-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+    .result-retry {
+      display: block; text-align: center; font-size: .82rem; color: #bbb;
+      cursor: pointer; transition: color .2s;
+    }
+    .result-retry:hover { color: #555; }
+
+    /* MOBILE */
+    @media (max-width: 520px) {
+      #nav { padding: 0 20px; }
+      .screen { padding: 32px 20px; }
+      #s-result { padding: 32px 20px 80px; }
+      .q-text { margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <a href="../" class="nav-logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+      <circle cx="10" cy="9.5" r="4.5" fill="#D3F45A"/>
+      <path d="M17 5 L28 5 L28 20" stroke="#7B61FF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.5 21 Q10.5 29.5 20 27" stroke="#111" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
+    <span class="nav-logo-text">FINDIER LAB</span>
+  </a>
+  <a href="../" class="nav-back">← 홈으로</a>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+
+<!-- QUIZ -->
+<div id="quiz">
+
+  <!-- INTRO -->
+  <div class="screen active" id="s-intro">
+    <div class="intro-badge"><span class="intro-badge-dot"></span>FREE BRAND DIAGNOSIS</div>
+    <h1 class="intro-title">내 브랜드,<br>지금 어디쯤 있나요?</h1>
+    <p class="intro-sub">6가지 질문으로 현재 브랜드 상태를 진단합니다.<br>솔직하게 답할수록 결과가 정확해요.</p>
+    <button class="start-btn" onclick="startQuiz()">진단 시작하기 →</button>
+    <p class="intro-note">이메일 불필요 &nbsp;·&nbsp; 결과 즉시 확인 &nbsp;·&nbsp; 3분 소요</p>
+  </div>
+
+  <!-- QUESTION -->
+  <div class="screen" id="s-question">
+    <div class="q-wrap">
+      <p class="q-num" id="qNum">Q 01 / 06</p>
+      <h2 class="q-text" id="qText"></h2>
+      <div class="answers" id="answers"></div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="screen" id="s-result">
+    <div class="result-wrap">
+      <div class="result-badge"><span class="result-badge-dot"></span>진단 완료</div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-stage" id="resultStage"></div>
+      <p class="result-diag" id="resultDiag"></p>
+      <p class="insights-label">지금 필요한 것</p>
+      <div class="result-insights" id="resultInsights"></div>
+      <a class="result-plan" id="resultPlan" href="#"></a>
+      <a href="../contact/" class="result-cta"><span class="result-cta-dot"></span>30분 무료 상담 예약하기 →</a>
+      <span class="result-retry" onclick="resetQuiz()">다시 진단하기</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    text: "우리 브랜드가 누구를 위한 건지, 한 문장으로 설명할 수 있다",
+    insight: "브랜드 타겟이 아직 명확하게 정의되어 있지 않아요. 누구를 위한 브랜드인지가 모든 것의 출발점입니다."
+  },
+  {
+    text: "고객이 나에게 돈을 내는 이유를 스스로 명확하게 설명할 수 있다",
+    insight: "고객이 선택하는 이유, 즉 가치 제안이 불명확해요. 이게 없으면 가격 협상에서 항상 밀립니다."
+  },
+  {
+    text: "광고나 SNS를 멈춰도 문의나 매출이 들어오는 구조가 있다",
+    insight: "구조적 유입 채널이 아직 없어요. 광고 의존도가 높으면 비용이 오를수록 이익이 줄어듭니다."
+  },
+  {
+    text: "홈페이지나 SNS를 처음 본 사람이 우리 브랜드를 단번에 이해한다",
+    insight: "브랜드 커뮤니케이션이 아직 명확하지 않아요. 처음 3초 안에 설득하지 못하면 이탈합니다."
+  },
+  {
+    text: "한 번 구매한 고객이 다시 오는 구조가 설계되어 있다",
+    insight: "재구매·재방문 시스템이 없어요. 신규 고객 유치 비용은 기존 고객 유지의 5배입니다."
+  },
+  {
+    text: "대표 없이도 하루 이틀 운영이 가능한 구조가 있다",
+    insight: "운영이 대표에게 집중되어 있어요. 이 상태에서는 확장이 불가능하고 번아웃이 옵니다."
+  }
+];
+
+const tiers = [
+  {
+    range: [0, 2],
+    stage: 'STAGE 01',
+    label: '브랜드 기초 단계',
+    dotColor: '#E2E0DC',
+    diag: '브랜드의 뼈대가 아직 갖춰지지 않은 상태예요. 지금 가장 중요한 건 빠른 실행이 아니라, 기본 정보부터 차곡차곡 쌓는 일입니다.',
+    plan: '→ 블로그 구독 BASIC 추천 — 월 9만원부터, 기본 정보 콘텐츠로 시작',
+    planHref: '../for-business/#blog-pricing',
+    code: 'basic'
+  },
+  {
+    range: [3, 4],
+    stage: 'STAGE 02',
+    label: '브랜드 성장 단계',
+    dotColor: '#7B61FF',
+    diag: '방향은 보이지만 구조가 아직 불완전해요. 지금이 가장 중요한 시점입니다. 정보량을 늘리고 상황별 콘텐츠로 확장할 때입니다.',
+    plan: '→ 블로그 구독 STANDARD 추천 — 상황별 콘텐츠로 정보량 확장',
+    planHref: '../for-business/#blog-pricing',
+    code: 'standard'
+  },
+  {
+    range: [5, 6],
+    stage: 'STAGE 03',
+    label: '브랜드 확장 단계',
+    dotColor: '#D3F45A',
+    diag: '기초가 잘 갖춰진 브랜드예요. 지금은 검색과 AI 노출까지 한 번에 정비하는 운영 자동화 타이밍입니다.',
+    plan: '→ AI 검색 풀패키지 추천 — 9가지 서비스를 한 번에 구축',
+    planHref: '../ai-package/',
+    code: 'package'
+  }
+];
+
+let currentQ = 0;
+let scores = [];
+let wrongQs = [];
+
+function goTo(fromId, toId) {
+  const from = document.getElementById(fromId);
+  const to = document.getElementById(toId);
+  from.classList.remove('active');
+  from.classList.add('exit');
+  setTimeout(() => from.classList.remove('exit'), 450);
+  to.classList.add('active');
+}
+
+function startQuiz() {
+  currentQ = 0; scores = []; wrongQs = [];
+  renderQuestion();
+  updateProgress(1 / 6);
+  goTo('s-intro', 's-question');
+  gtag('event', 'quiz_start');
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('qNum').textContent = `Q ${String(currentQ + 1).padStart(2,'0')} / 06`;
+
+  const qEl = document.getElementById('qText');
+  qEl.style.opacity = '0';
+  qEl.style.transform = 'translateY(12px)';
+  qEl.textContent = q.text;
+  requestAnimationFrame(() => {
+    qEl.style.transition = 'opacity .3s ease, transform .3s ease';
+    qEl.style.opacity = '1';
+    qEl.style.transform = 'none';
+  });
+
+  const container = document.getElementById('answers');
+  container.innerHTML = '';
+
+  [
+    { label: '그렇다', emoji: '✓', score: 1, cls: 'ans-yes' },
+    { label: '아직 아니다', emoji: '✕', score: 0, cls: 'ans-no' }
+  ].forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = `ans-btn ${opt.cls}`;
+    btn.innerHTML = `<span class="ans-icon">${opt.emoji}</span>${opt.label}`;
+    btn.onclick = () => handleAnswer(opt.score);
+    container.appendChild(btn);
+  });
+}
+
+function handleAnswer(score) {
+  document.querySelectorAll('.ans-btn').forEach(b => b.disabled = true);
+  scores.push(score);
+  if (score === 0) wrongQs.push(currentQ);
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < questions.length) {
+      updateProgress((currentQ + 1) / 6);
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 280);
+}
+
+function updateProgress(ratio) {
+  document.getElementById('progFill').style.width = (ratio * 100) + '%';
+}
+
+function showResult() {
+  const total = scores.reduce((a, b) => a + b, 0);
+  const tier = tiers.find(t => total >= t.range[0] && total <= t.range[1]);
+
+  document.getElementById('resultScore').innerHTML = `${total} <span class="of">/ 6</span>`;
+
+  const stageEl = document.getElementById('resultStage');
+  stageEl.innerHTML = `<span class="result-stage-dot" style="background:${tier.dotColor}"></span>${tier.stage} &nbsp;·&nbsp; ${tier.label}`;
+
+  document.getElementById('resultDiag').textContent = tier.diag;
+
+  const planEl = document.getElementById('resultPlan');
+  planEl.innerHTML = `<span class="plan-icon">💡</span>${tier.plan}`;
+  planEl.href = tier.planHref;
+
+  const insightsEl = document.getElementById('resultInsights');
+  insightsEl.innerHTML = '';
+  const show = wrongQs.slice(0, 3);
+  if (show.length === 0) {
+    insightsEl.innerHTML = '<p style="font-size:.88rem;color:#555;line-height:1.7">모든 항목이 잘 갖춰져 있어요. 이제 더 빠른 확장이 가능한 시점입니다.</p>';
+  } else {
+    show.forEach(qi => {
+      const div = document.createElement('div');
+      div.className = 'insight-item';
+      div.innerHTML = `<span class="insight-dot"></span><span>${questions[qi].insight}</span>`;
+      insightsEl.appendChild(div);
+    });
+  }
+
+  updateProgress(1);
+  goTo('s-question', 's-result');
+  document.getElementById('s-result').scrollTop = 0;
+
+  gtag('event', 'quiz_complete', { score: total, stage: tier.code });
+}
+
+function resetQuiz() {
+  currentQ = 0; scores = []; wrongQs = [];
+  document.getElementById('progFill').style.width = '0%';
+  const result = document.getElementById('s-result');
+  const intro = document.getElementById('s-intro');
+  result.classList.remove('active');
+  result.style.transform = 'translateX(100%)';
+  intro.classList.add('active');
+  intro.style.transform = '';
+  setTimeout(() => { result.style.transform = ''; }, 10);
+}
+</script>
+
+</body>
+</html>
